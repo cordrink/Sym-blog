@@ -16,6 +16,15 @@
             <div class="article-content-details">
                 <h2 class="article-title">{{ article.title }}</h2>
                 <div class="article-createdAt">{{ article.fromNow }}</div>
+
+                <div class="article-categories flex wrap">
+                    {% for category in article.categories %}
+                        <div class="article-category-item badge">
+                            {{ category.name }}
+                            ({{ category.articles | length }}) article(s) publié
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
 
