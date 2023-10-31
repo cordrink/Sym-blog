@@ -25,23 +25,20 @@ class Blog extends Fixture
             $user->setFullName($faker->full_name())
                 ->setEmail($faker->email())
                 ->setPassword(sha1("test"))
-                ->setCreatedAt($faker->dateTimeImmutable())
-            ;
+                ->setCreatedAt($faker->dateTimeImmutable());
 
             $address = new Address();
             $address->setStreet($faker->streetAddress())
                 ->setCodePostal($faker->postcode())
                 ->setCity($faker->city())
                 ->setCountry($faker->country())
-                ->setCreatedAt($faker->dateTimeImmutable())
-            ;
+                ->setCreatedAt($faker->dateTimeImmutable());
 
             $profile = new Profile();
             $profile->setPicture($faker->image())
                 ->setCoverPicture($faker->image())
                 ->setDescription($faker->description(60))
-                ->setCreatedAt($faker->dateTimeImmutable())
-            ;
+                ->setCreatedAt($faker->dateTimeImmutable());
             $user->addAddress($address);
             $user->setProfile($profile);
 
@@ -52,29 +49,27 @@ class Blog extends Fixture
         }
 
         $categories = [];
-        for ($i=0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $category = new Category();
             $category->setName($faker->description(30))
                 ->setDescription($faker->description(60))
                 ->setImageUrl($faker->image())
-                ->setCreatedAt($faker->dateTimeImmutable())
-            ;
+                ->setCreatedAt($faker->dateTimeImmutable());
             $categories[] = $category;
             $manager->persist($category);
         }
 
-        /*for ($i=0; $i < 10; $i++) {
+        for ($i = 0; $i < 300; $i++) {
             $article = new Article();
             $article->setTitle($faker->description(30))
                 ->setContent($faker->text(5, 10))
                 ->setImageUrl($faker->image())
                 ->setCreatedAt($faker->dateTimeImmutable())
                 ->setAuthor($users[rand(0, count($users) - 1)])
-                ->addCategory($categories[rand(0, count($categories) - 1)])
-            ;
+                ->addCategory($categories[rand(0, count($categories) - 1)]);
 
             $manager->persist($article);
-        }*/
+        }
 
         $manager->flush();
     }

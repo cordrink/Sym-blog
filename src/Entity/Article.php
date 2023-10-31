@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use EsperoSoft\DateFormat\DateFormat;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -18,6 +20,9 @@ class Article
 
     #[ORM\Column(length: 60)]
     private ?string $title = null;
+
+    #[ORM\Column(length: 255, nullable: false)]
+    private ?string $slug = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
@@ -38,6 +43,14 @@ class Article
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'articles')]
     private Collection $categories;
 
+    /**
+     * @return string
+     */
+    public function getFromNow(): string
+    {
+        return DateFormat::fromNow($this->createdAt);
+    }
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -56,6 +69,8 @@ class Article
     public function setTitle(string $title): static
     {
         $this->title = $title;
+
+        $this->setSlug((new Slugify())->slugify($this->title));
 
         return $this;
     }
@@ -140,6 +155,26 @@ class Article
     public function removeCategory(Category $category): static
     {
         $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set the value of slug
+     * @param string|null $slug
+     * @return self
+     */
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
