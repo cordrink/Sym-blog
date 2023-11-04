@@ -19,10 +19,10 @@
 
                 <div class="article-categories flex wrap">
                     {% for category in article.categories %}
-                        <div class="article-category-item badge">
+                        <a href="{{ path('app_article_by_category', {'slug' : category.slug}) }}" class="article-category-item badge">
                             {{ category.name }}
                             ({{ category.articles | length }}) article(s) publié
-                        </div>
+                        </a>
                     {% endfor %}
                 </div>
             </div>

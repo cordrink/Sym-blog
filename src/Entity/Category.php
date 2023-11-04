@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -33,6 +34,9 @@ class Category
     #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'categories')]
     private Collection $articles;
 
+    #[ORM\Column(nullable: false)]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -51,6 +55,8 @@ class Category
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        $this->setSlug((new Slugify())->slugify($this->name));
 
         return $this;
     }
@@ -128,5 +134,21 @@ class Category
         }
 
         return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string|null $slug
+     */
+    public function setSlug(?string $slug): void
+    {
+        $this->slug = $slug;
     }
 }

@@ -1,0 +1,47 @@
+header ul {
+    list-style-type: none;
+    gap: 20px;
+    text-transform: uppercase;
+}
+
+header ul li {
+    position: relative;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+header ul li:hover ul {
+    display: block;
+}
+
+header ul li ul {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    padding: 0;
+    min-width: 300px;
+    background-color: white;
+    color: var(--main-color);
+    display: none;
+}
+
+header ul li ul li {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    white-space: nowrap;
+}
+
+header ul li ul li a {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+header ul li ul li:hover {
+    background-color: var(--main-color);
+    color: white;
+    cursor: pointer;
+}

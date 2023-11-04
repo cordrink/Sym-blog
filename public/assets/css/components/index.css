@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: #efefef;
 }
 
 header {
@@ -9,6 +10,7 @@ header {
     height: 80px;
     display: flex;
     align-items: center;
+    box-shadow: 0 2px 25px #1d1d1d1d;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -17,12 +19,14 @@ h1,h2,h3,h4,h5,h6 {
 
 header h2 {
     padding: 30px;
+    text-shadow: 1px 1px 25px #1d1d1d1d;
+    color: white;
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 50px auto;
 }
 
 .badge {
@@ -32,7 +36,78 @@ header h2 {
     padding: 5px;
 }
 
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.aic {
+    align-items: center;
+}
+
+.jcc {
+    justify-content: center;
+}
+
 a {
     color: black;
     text-decoration: none;
+}
+
+.btn {
+    padding: 12px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    box-shadow: 0 2px 25px #1d1d1d1d;
+    background-color: var(--main-color);
+}
+
+footer{
+    background: var(--main-color);
+    color: white;
+    /* height: 300px; */
+    padding: 50px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 25px #1d1d1d;
+}
+
+footer .footer-content{
+    gap: 10px;
+}
+
+footer .footer-content-item{
+    min-width: 300px;
+    padding: 5px;
+}
+
+footer h2{
+    /* text-align: center; */
+    text-transform: uppercase;
+    font-size: 20px;
+    text-shadow: 1px 1px 25px #1d1d1d;
+    border-bottom: 2px solid #efefef;
+    padding-bottom: 5px;
+    display:inline-block;
+}
+
+footer ul{
+    padding: 0;
+    list-style-type: none;
+}
+
+footer ul li{
+    line-height: 1.2;
+    padding-bottom: 15px;
 }

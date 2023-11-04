@@ -10,6 +10,17 @@
     box-shadow: 2px 2px 13px #ccc;
     width: 100%;
     max-width: 300px;
+    cursor: pointer;
+}
+
+.articles .article-item:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.article-item .article-details {
+    padding: 5px;
+    gap:5px;
 }
 
 .articles .article-item .article-image img{
@@ -31,10 +42,9 @@
 
 .article-infos::before {
     content: " ";
-    display: block;
+    display: inline-block;
     height: 15px;
     width: 5px;
-    margin-right: 2px;
     background-color: var(--main-color);
 }
 

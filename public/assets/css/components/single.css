@@ -1,5 +1,10 @@
 .single-articles .article-image {
     height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 2px 2px 13px #ccc;
+    border-radius: 15px;
+    border: 5px solid var(--main-color);
 }
 
 .single-articles .article-image img {
@@ -9,8 +14,12 @@
 
 .single-articles .article-details {
     padding: 20px 0;
+    gap: 20px;
 }
 
 .content {
     text-align: justify;
+    line-height: 1.5;
+    border-radius: 15px;
+    padding: 10px;
 }
