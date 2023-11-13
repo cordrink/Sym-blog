@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ContactRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
@@ -14,15 +15,28 @@ class Contact
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\Length(
+        min: 3,
+        minMessage: 'Votre nom doit contenier au moin {{ limit }} caracteres',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $full_name = null;
 
+    #[Assert\Email(message: 'l\'email {{ value }} n\'est pas valide. ')]
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[Assert\Length(
+        min: 10,
+        minMessage: 'Votre sujet doit contenir au moins {{ limit }} caracteres',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $subject = null;
 
+    #[Assert\Length(
+        min: 20,
+        minMessage: 'Votre message doit contenir au moins {{ limit }} caracteres',
+    )]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
 
@@ -30,7 +44,7 @@ class Contact
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
-    private ?bool $isRead = null;
+    private ?bool $isRead = false;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;

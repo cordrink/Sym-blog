@@ -1,3 +1,6 @@
 :root {
     --main-color: #008080;
+    --animate-delay: 0.9s;
+    --main-danger: rgb(255, 0, 60);
+    --main-success: rgb(0, 68, 45);
 }

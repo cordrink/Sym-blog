@@ -11,6 +11,9 @@ header {
     display: flex;
     align-items: center;
     box-shadow: 0 2px 25px #1d1d1d1d;
+    position: sticky;
+    top: 0;
+    z-index: 99999;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -25,8 +28,11 @@ header h2 {
 
 .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 50px auto;
+    min-height: 60vh;
+    position: relative;
+    z-index: 999;
 }
 
 .badge {
