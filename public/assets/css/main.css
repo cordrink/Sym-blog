@@ -1,4 +1,5 @@
 @import "components/color.css";
+@import "Libraries/select2.min.css";
 @import "components/home.css";
 @import "components/index.css";
 @import "components/single.css";
@@ -6,4 +7,5 @@
 @import "components/header.css";
 @import "components/form.css";
 @import "components/animate.css";
+@import "components/editor.css";
 @import "components/alert.css";

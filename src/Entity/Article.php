@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 use EsperoSoft\DateFormat\DateFormat;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
-class Article
+class Article 
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -29,6 +29,8 @@ class Article
 
     #[ORM\Column(length: 255)]
     private ?string $imageUrl = null;
+
+    private ?string $imageFile = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
@@ -97,6 +99,22 @@ class Article
         $this->imageUrl = $imageUrl;
 
         return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageFile(): ?string
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param string|null $imageFile
+     */
+    public function setImageFile(?string $imageFile): void
+    {
+        $this->imageFile = $imageFile;
     }
 
     public function getAuthor(): ?User

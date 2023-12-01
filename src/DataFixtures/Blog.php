@@ -19,7 +19,7 @@ class Blog extends Fixture
     {
         $faker = new Faker();
 
-        $users = [];
+        /*$users = [];
         for ($i = 0; $i < 100; $i++) {
             $user = new User();
             $user->setFullName($faker->full_name())
@@ -46,20 +46,30 @@ class Blog extends Fixture
             $manager->persist($user);
             $manager->persist($address);
             $manager->persist($profile);
-        }
+        }*/
 
         $categories = [];
-        for ($i = 0; $i < 10; $i++) {
+        $name = [
+            'Actualités',
+            'Economie',
+            'Formation',
+            'Sport',
+            'Politique',
+            'Situation du pays(continental)',
+            'Divers',
+        ];
+
+        for ($i = 0; $i < count($name); $i++) {
             $category = new Category();
-            $category->setName($faker->description(30))
-                ->setDescription($faker->description(60))
+            $category->setName($name[$i])
+                ->setDescription('Description de : '. $name[$i])
                 ->setImageUrl($faker->image())
                 ->setCreatedAt($faker->dateTimeImmutable());
-            $categories[] = $category;
+//            $categories[] = $category;
             $manager->persist($category);
         }
 
-        for ($i = 0; $i < 300; $i++) {
+        /*for ($i = 0; $i < 300; $i++) {
             $article = new Article();
             $article->setTitle($faker->description(30))
                 ->setContent($faker->text(5, 10))
@@ -69,7 +79,7 @@ class Blog extends Fixture
                 ->addCategory($categories[rand(0, count($categories) - 1)]);
 
             $manager->persist($article);
-        }
+        }*/
 
         $manager->flush();
     }

@@ -78,6 +78,10 @@ a {
     background-color: var(--main-color);
 }
 
+.mb-10 {
+    margin-bottom: 15px;
+}
+
 footer{
     background: var(--main-color);
     color: white;

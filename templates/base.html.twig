@@ -9,8 +9,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     {% endblock %}
 
-    {% block javascripts %}
-    {% endblock %}
+
 </head>
 <body>
 <header>
@@ -34,6 +33,14 @@
                 </ul>
             </li>
             <li class="nav-item"><a href="{{ path('app_contact') }}">Contact</a></li>
+            {% if app.user %}
+                <li class="nav-item"><a href="{{ path('app_login') }}">Compte</a></li>
+                <li class="nav-item"><a href="{{ path('app_logout') }}">Deconexion</a></li>
+            {% else %}
+                <li class="nav-item"><a href="{{ path('app_login') }}">Conexion</a></li>
+                <li class="nav-item"><a href="{{ path('app_register') }}">Inscription</a></li>
+            {% endif %}
+
         </ul>
     </nav>
 </header>
@@ -90,5 +97,13 @@
         </div>
     </div>
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/js/editor.js') }}"></script>
+{% block javascripts %}
+
+{% endblock %}
+
 </body>
 </html>

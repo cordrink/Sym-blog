@@ -1,0 +1,7 @@
+{% if article.author.profile.picture is defined %}
+    <img src="{{ article.author.profile.picture }}"
+         alt="Image de profile de {{ article.author.fullName }}">
+{% else %}
+    <img src="{{ asset('assets/images/articles/.png') }}"
+         alt="Image de profile de {{ article.author.fullName }}">
+{% endif %}
