@@ -62,7 +62,7 @@ class ArticleController extends AbstractController
             $entityManager->persist($article);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_single_article', ['slug' => $article->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('article/new.html.twig', [
@@ -98,7 +98,7 @@ class ArticleController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_single_article', ['slug' => $article->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('article/edit.html.twig', [

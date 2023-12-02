@@ -2,6 +2,16 @@
     {% if title is defined %}
         <h2 class="title">{{ title }}</h2>
     {% endif %}
-    {{ form_widget(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.content) }}
+    {% if required is defined  %}
+        {{ form_row(form.imageFile, {attr: {required: required}}) }}
+    {% else %}
+        {{ form_row(form.imageFile) }}
+    {% endif %}
+    {{ form_row(form.categories) }}
+<div class="flex" style="gap: 5px; margin-bottom: 10px">
     <button class="btn">{{ button_label|default('Save') }}</button>
+    <a class="btn" style="text-align: center" href="{{ path('app_article_index') }}">Cancel</a>
+</div>
 {{ form_end(form) }}

@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {{ include('article/_form.html.twig', {title: "Créer un article"}) }}
+    {{ include('article/_form.html.twig', {title: "Créer un article", required: 'required'}) }}
 
     <a href="{{ path('app_article_index') }}">back to list</a>
 {% endblock %}

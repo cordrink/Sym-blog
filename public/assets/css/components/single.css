@@ -1,10 +1,11 @@
 .single-articles .article-image {
-    height: 300px;
+    height: 400px;
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: 2px 2px 13px #ccc;
     border-radius: 15px;
     border: 5px solid var(--main-color);
+    background-position: center;
 }
 
 .single-articles .article-image img {
