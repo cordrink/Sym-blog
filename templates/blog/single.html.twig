@@ -1,44 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="single-articles">
+    <div class="single-article flex gap-10">
+        <div class="single-articles">
 
-        <div class="article-image" style="background-image: url('{{ article.imageUrl }}')">
-        </div>
+            <div class="article-image" style="background-image: url('{{ article.imageUrl }}')">
+            </div>
 
-        <div class="article-details flex">
-            <div class="article-author-details">
-                <div class="article-author-picture">
-                    {{ include('blog/picture.html.twig') }}
+            <div class="article-details flex">
+                <div class="article-author-details">
+                    <div class="article-author-picture">
+                        {{ include('blog/picture.html.twig') }}
+                    </div>
+                </div>
+                <div class="article-content-details">
+                    <h2 class="article-title">{{ article.title }}</h2>
+                    <div class="article-createdAt">{{ article.fromNow }}</div>
+
+                    <div class="article-categories flex wrap">
+                        {% for category in article.categories %}
+                            <a href="{{ path('app_article_by_category', {'slug' : category.slug}) }}"
+                               class="article-category-item badge">
+                                {{ category.name }}
+                                ({{ category.articles | length }}) article(s) publié
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-            <div class="article-content-details">
-                <h2 class="article-title">{{ article.title }}</h2>
-                <div class="article-createdAt">{{ article.fromNow }}</div>
 
-                <div class="article-categories flex wrap">
-                    {% for category in article.categories %}
-                        <a href="{{ path('app_article_by_category', {'slug' : category.slug}) }}"
-                           class="article-category-item badge">
-                            {{ category.name }}
-                            ({{ category.articles | length }}) article(s) publié
-                        </a>
-                    {% endfor %}
+            <div class="content animate__backInUp">
+                {{ article.content | raw }}
+            </div>
+
+            {% if app.user is same as (article.author) %}
+                <div class="action animate__backInUp">
+                    <a href="{{ path('app_article_edit', {'id' : article.id}) }}" class="btn">Edit</a>
                 </div>
-            </div>
+            {% endif %}
+
         </div>
-
-        <div class="content animate__backInUp">
-            {{ article.content | raw }}
-        </div>
-
-        {% if app.user is same as (article.author) %}
-            <div class="action animate__backInUp">
-                <a href="{{ path('app_article_edit', {'id' : article.id}) }}" class="btn">Edit</a>
-            </div>
-        {% endif %}
-
+        <aside class="categories">
+            <h2>Category</h2>
+            <ul>
+                {% for category in app.session.get("categories") %}
+                    <li class="">
+                        <a href="{{ path('app_article_by_category', {'slug' :category.slug}) }} ">{{ category.name }} ({{ category.articles| length }}articles)</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
     </div>
+
 {% endblock %}
 
 {% block title %}

@@ -4,14 +4,26 @@
     {% endif %}
     {{ form_row(form.title) }}
     {{ form_row(form.content) }}
-    {% if required is defined  %}
-        {{ form_row(form.imageFile, {attr: {required: required}}) }}
-    {% else %}
-        {{ form_row(form.imageFile) }}
-    {% endif %}
-    {{ form_row(form.categories) }}
+<div class="flex">
+    <div class="image-preview">
+        {% if not article.imageUrl == "" %}
+            <img width="100" height="100" src="{{ article.imageUrl }}" alt="Image de l'article : {{ article.title }}">
+        {% endif %}
+    </div>
+    <div class="">
+        {% if required is defined %}
+            {{ form_row(form.imageFile, {attr: {required: required}}) }}
+        {% else %}
+            {{ form_row(form.imageFile) }}
+        {% endif %}
+    </div>
+</div>
+
+{{ form_row(form.categories) }}
 <div class="flex" style="gap: 5px; margin-bottom: 10px">
     <button class="btn">{{ button_label|default('Save') }}</button>
     <a class="btn" style="text-align: center" href="{{ path('app_article_index') }}">Cancel</a>
 </div>
 {{ form_end(form) }}
+
+

@@ -3,6 +3,10 @@ table {
     width: 100%;
 }
 
+.container-table {
+    overflow-x: auto;
+}
+
 table td, table th {
     border: 1px solid #ccc;
 }

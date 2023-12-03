@@ -9,20 +9,32 @@
     <a href="{{ path('app_article_index') }}">back to list</a>
 {% endblock %}
 
-{% block javascripts  %}
-<script>
-    $(document).ready(function () {
-    $('.choice_categories').select2();
-});
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $('.choice_categories').select2();
+            $("input[type='file']").change(function () {
+                let file = $(this).get(0).files[0];
 
-    ClassicEditor
-        .create( document.querySelector( '#article_content' ) )
-        .then( editor => {
-            console.log( editor );
-        } )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function () {
+                        let img = `<img width="100" src='${reader.result}' alt="preview image" />`
+                        $(".image-preview").html(img)
+                    }
+                    reader.readAsDataURL(file)
+                }
+            })
+        });
+
+        ClassicEditor
+            .create(document.querySelector('#article_content'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 {% endblock %}
 

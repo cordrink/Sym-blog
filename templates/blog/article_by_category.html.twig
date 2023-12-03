@@ -13,7 +13,9 @@
                 </div>
                 <div class="article-details flex">
                     <div class="article-author-details">
-                        {{ include('blog/picture.html.twig') }}
+                        <div class="article-author-picture">
+                            {{ include('blog/picture.html.twig') }}
+                        </div>
                     </div>
                     <div class="article-content-details">
                         <h2 class="article-title">{{ article.title }}</h2>

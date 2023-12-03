@@ -8,8 +8,9 @@
         <a class="btn" href="{{ path('app_article_new') }}">Create new</a>
     </div>
 
-    <table class="table">
-        <thead>
+    <div class="container-table">
+        <table class="table">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Title</th>
@@ -18,35 +19,36 @@
                 <th>CreatedAt</th>
                 <th>actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.title }}</td>
-                <td class="td-content">
-                    <div class="article-content">
-                        {{ article.content | raw }}
-                    </div>
-                </td>
-                <td>
-                    <img src="{{ article.imageUrl }}" alt="image de {{ article.title }}">
-                </td>
-                <td>{{ article.createdAt ? article.fromNow : '' }}</td>
-                <td>
-                    <div class="flex" style="gap: 5px">
-                        <a class="btn" href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
-                        <a class="btn" href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
-                    </div>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.title }}</td>
+                    <td class="td-content">
+                        <div class="article-content">
+                            {{ article.content | raw }}
+                        </div>
+                    </td>
+                    <td>
+                        <img src="{{ article.imageUrl }}" alt="image de {{ article.title }}">
+                    </td>
+                    <td>{{ article.createdAt ? article.fromNow : '' }}</td>
+                    <td>
+                        <div class="flex" style="gap: 5px">
+                            <a class="btn" href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
+                            <a class="btn" href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

@@ -15,6 +15,18 @@
     <script>
         $(document).ready(function () {
             $('.choice_categories').select2();
+            $("input[type='file']").change(function () {
+                let file = $(this).get(0).files[0];
+
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function () {
+                        let img = `<img width="100" src='${reader.result}' alt="preview image" />`
+                        $(".image-preview").html(img)
+                    }
+                    reader.readAsDataURL(file)
+                }
+            })
         });
 
         ClassicEditor

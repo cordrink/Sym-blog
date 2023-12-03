@@ -20,6 +20,15 @@ h1,h2,h3,h4,h5,h6 {
     margin: 0;
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
 header h2 {
     padding: 30px;
     text-shadow: 1px 1px 25px #1d1d1d1d;
@@ -33,6 +42,8 @@ header h2 {
     min-height: 60vh;
     position: relative;
     z-index: 999;
+    overflow: hidden;
+    overflow-x: auto;
 }
 
 .badge {

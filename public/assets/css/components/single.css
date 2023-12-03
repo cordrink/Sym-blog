@@ -1,3 +1,7 @@
+.single-articles {
+    width: 1000px;
+}
+
 .single-articles .article-image {
     height: 400px;
     background-size: cover;
