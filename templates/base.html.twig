@@ -8,8 +8,6 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     {% endblock %}
-
-
 </head>
 <body>
 <header>
@@ -45,8 +43,15 @@
 
 {% block slider %}{% endblock %}
 
-<div class="container">
-    {% block body %}{% endblock %}
+<div class="container flex gap-10 ">
+    <div class="flex-1">
+        {% block body %}{% endblock %}
+    </div>
+
+    {% if block('aside') is defined %}
+        {% include 'aside/index.html.twig' %}
+    {% endif %}
+
 </div>
 
 <footer>
@@ -95,9 +100,13 @@
         </div>
     </div>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.0.2/readmore.min.js" integrity="sha512-llWtDR3k09pa9nOBfutQnrS2kIEG7M6Zm7RIjVVLNab1wRs8NUmA0OjAE38jKzKeCg+A3rdq8AVW41ZTsfhu5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.0.2/readmore.min.js"
+        integrity="sha512-llWtDR3k09pa9nOBfutQnrS2kIEG7M6Zm7RIjVVLNab1wRs8NUmA0OjAE38jKzKeCg+A3rdq8AVW41ZTsfhu5Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{ asset('assets/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/js/editor.js') }}"></script>
 {% block javascripts %}

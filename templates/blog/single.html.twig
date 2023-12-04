@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block aside %}
+    
+{% endblock %}
+
+
 {% block body %}
-    <div class="single-article flex gap-10">
+    <div class="single-article">
         <div class="single-articles">
 
             <div class="article-image" style="background-image: url('{{ article.imageUrl }}')">
@@ -40,16 +45,7 @@
             {% endif %}
 
         </div>
-        <aside class="categories">
-            <h2>Category</h2>
-            <ul>
-                {% for category in app.session.get("categories") %}
-                    <li class="">
-                        <a href="{{ path('app_article_by_category', {'slug' :category.slug}) }} ">{{ category.name }} ({{ category.articles| length }}articles)</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </aside>
+
     </div>
 
 {% endblock %}
